@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&family=Noto+Sans&display=swap');
+.mat-mdc-form-field{
+    width: 98%;
+    margin: 1%;
+  }
+  .mat-50{
+    width: 48%;
+    margin: 1%;
+  }
+  
+  .activity{
+    font-size: 250%;
+    font-weight: 900;
+    line-height: 45px;  
+    font-family: 'Noto Sans', sans-serif;
+}
+
+.a{
+ 
+
+}
+.b{
+  background-color: #1ba94c;
+  color: White
+}
+.button_container{
+  display:flex;
+  gap: 10px;
+}

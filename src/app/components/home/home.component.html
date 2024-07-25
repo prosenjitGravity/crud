@@ -1,0 +1,128 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid" style="background-color: #050c1b">
+  <div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-3" style="margin-top:80px">
+          <form [formGroup]="loginForm">
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title *ngIf="isinsert ">Insert Data</mat-card-title>
+                <mat-card-title *ngIf="!isinsert ">Update Data</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div>
+                  <mat-form-field appearance="outline">
+                    <mat-label>Title</mat-label>
+                    <input
+                      matInput
+                      placeholder="Sundar Pichai"
+                      type="text"
+                      formControlName="name"
+                      required
+                    />
+                    <mat-error>Title <strong> required </strong></mat-error>
+                  </mat-form-field>
+                </div>
+                <div>
+                  <mat-form-field id="outline" appearance="outline">
+                    <mat-label>Body</mat-label>
+                    <input
+                      matInput
+                      formControlName="salary"
+                      required
+                    />
+                    <mat-error>Body <strong> required </strong></mat-error>
+                  </mat-form-field>
+                </div>
+              </mat-card-content>
+              <mat-card-actions>
+                <div class="position-absolute end-0 p-4">
+                  <button *ngIf="isinsert"
+                    mat-raised-button
+                    [disabled]="!loginForm.valid"
+                    style="background-color: #1ba94c;color:white"
+                    [ngClass]="loginForm.invalid? 'a':'b'"
+                    (click)="saveUser()"
+                  >
+                    Add
+                  </button>
+                  <button *ngIf="!isinsert"
+                    mat-raised-button
+                    [disabled]="!loginForm.valid"
+                    style="background-color: #1ba94c;color:white"
+                    [ngClass]="loginForm.invalid? 'a':'b'"
+                    (click)="update()"
+                  >
+                    Update
+                  </button>
+                </div>
+              </mat-card-actions>
+            </mat-card>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-6 p-3">
+        <img
+          src="assets/images/hackerrank_svg.svg"
+          class="img-fluid"
+          alt=""
+          style="height: 400px"
+        />
+      </div>
+    </div>
+  </div>
+  <div style="background-color: #1d2432">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="p-4">
+            
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="p-4">
+        <mat-list>
+          <table class="table p-2">
+              <thead>
+                <tr >
+                  <th scope="col">SlNo</th>
+                  <th scope="col">Title</th>
+                  <th scope="col">Body</th>
+                  <th scope="col">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listdata; let i = index">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{item.title}}</td>
+                  <td>{{item.body}}</td>
+                  <td (click)="action(item.id)">
+                  
+                    <!-- <button mat-button class="project-title" [matMenuTriggerFor]="menu">more</button> -->
+                    <div class="button-container" >
+                      <div style="padding: 10px;">
+                        <button mat-mini-fab color="primary" class="btn" >
+                          <mat-icon>edit</mat-icon>
+                        </button>
+                      </div>
+                      <div style="padding: 10px;">
+                        <button mat-mini-fab color="accent" class="btn" (click)="deleted(item.id)">
+                          <mat-icon>delete</mat-icon>
+                        </button>
+                      </div>
+                      
+                    </div>
+                    
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>
